@@ -36,7 +36,7 @@ int main()
 {
    unsigned char messagemain[] = "hello, this is a really cool file with some really cool contents\n";
 
-   for (int i = 0; i < 10; i++)
+   for (int k = 0; k < 10; k++)
    {
 
       //printf("entering into main \n\n");
