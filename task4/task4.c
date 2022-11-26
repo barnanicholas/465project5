@@ -2,9 +2,11 @@
 #include <stdio.h>
 #include <string.h>
 
-int messagedigest(const unsigned char *message, unsigned char **digest)
+char * messagedigest(const unsigned char *message)
 {
    printf("entering into md \n\n");
+   unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
+
    unsigned int len_digest;
    EVP_MD_CTX *mdctx;
    printf("create \n\n");
@@ -16,11 +18,11 @@ int messagedigest(const unsigned char *message, unsigned char **digest)
 	printf("malloc \n\n");
    *digest = (unsigned char *)OPENSSL_malloc(EVP_MD_size(EVP_sha256()));
    printf("final \n\n");
-   EVP_DigestFinal_ex(mdctx, *digest, &len_digest);
+   EVP_DigestFinal_ex(mdctx, digest, &len_digest);
 	printf(" destroy \n\n");
    EVP_MD_CTX_destroy(mdctx);
 
-   return len_digest;
+   return digest;
 }
 
 
@@ -33,8 +35,7 @@ int main()
    printf("entering into main \n\n");
 
    unsigned char message[] = "hello, this is a really cool file with some really cool contents\n";
-   unsigned char ** digest;
-   messagedigest(message, digest);
+   char * digest = messagedigest(message);
    printf("exiting\n\n");
    printf("the digest of \'%s\' is \'%s\'\n", message, *digest);
 
