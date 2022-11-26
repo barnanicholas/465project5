@@ -18,6 +18,7 @@ int messagedigest(const unsigned char *message, unsigned char * digest)
    *digest = (unsigned char *)OPENSSL_malloc(EVP_MD_size(EVP_sha256()));
    printf("final \n\n");
    EVP_DigestFinal_ex(mdctx, digest, &len_digest);
+   printf("the digest of \'%s\'\n", digest);
 	printf(" destroy \n\n");
    EVP_MD_CTX_destroy(mdctx);
 
