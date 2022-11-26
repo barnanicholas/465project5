@@ -29,7 +29,7 @@ int main()
    unsigned char message[] = "hello, this is a really cool file with some really cool contents\n";
    unsigned char ** digest;
    //messagedigest(message, digest);
-   printf("the digest of \'%s\' is \'%s\'\n", message, *digest);
+   //printf("the digest of \'%s\' is \'%s\'\n", message, *digest);
 
    return 0; 
 }
