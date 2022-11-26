@@ -44,7 +44,7 @@ int main()
    unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
 
    //while (!(digest[0] == digestmain[0] && digest[1] == digestmain[1]  && digest[2] == digestmain[2]) || message[255] == 127)
-   while (!(digest[0] == digestmain[0]) || message[255] == 127)
+   while (!(message[255] == 127))
    {
       for (int i = 0; i < 255; i++)
       {
@@ -56,6 +56,12 @@ int main()
          }
       }
       trials += 1;
+      if (digest[0] == digestmain[0])
+      {
+         printf("sucess");
+         break;
+      }
+      
    }
    
    if (message[255] == 127)
