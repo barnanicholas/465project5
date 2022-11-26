@@ -34,7 +34,7 @@ int main()
 {
    printf("entering into main \n\n");
 
-   unsigned char message[] = "hello, this is a really cool file with some really cool contentsaoeuaoeu\n";
+   unsigned char message[] = "hello, this is a really cool file with some really cool contents\n";
    unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
    int len = messagedigest(message, digest);
    printf("exiting\n\n");
