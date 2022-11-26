@@ -38,7 +38,7 @@ int main()
    unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
    int len = messagedigest(message, digest);
    printf("exiting\n\n");
-   for (i = 0; i < len; i++)
+   for (int i = 0; i < len; i++)
         printf("%02x", digest[i]);
     printf("\n");
 
