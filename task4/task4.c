@@ -4,7 +4,7 @@
 
 int messagedigest(const unsigned char *message, unsigned char **digest)
 {
-   printf('entering into md \n\n');
+   printf("entering into md \n\n");
    unsigned int len_digest;
    EVP_MD_CTX *mdctx;
 	mdctx = EVP_MD_CTX_create();
