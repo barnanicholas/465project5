@@ -40,7 +40,7 @@ int main()
    unsigned char * digestmain = malloc(EVP_MAX_MD_SIZE);
    int len = messagedigest(messagemain, digestmain);
    //printf("exiting\n\n");
-   unsigned char message[256] = {0};
+   unsigned char message[256] = {33};
    unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
 
    //while (!(digest[0] == digestmain[0] && digest[1] == digestmain[1]  && digest[2] == digestmain[2]) || message[255] == 127)
@@ -48,7 +48,7 @@ int main()
    {
       for (int i = 0; i < 255; i++)
       {
-         if (message[i] < 127)
+         if (message[i] < 126)
          {
             message[i] = message[i] + 1;
             //printf("%s \n", message);
@@ -65,7 +65,7 @@ int main()
       
    }
    
-   if (message[255] == 127)
+   if (message[255] == 126)
    {
       printf("better luck next time");
    }
