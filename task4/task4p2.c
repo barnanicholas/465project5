@@ -82,7 +82,7 @@ int main()
         printf("%02x", digest[i]);
     printf("\n");
    
-   printf("message main : %s \n message alt : \n number of trials req: %u \n", messagemain, message,trials);
+   printf("message main : %s \n message alt : %s \n number of trials req: %u \n", messagemain, message, trials);
    
 
    }
