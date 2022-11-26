@@ -51,7 +51,7 @@ int main()
          if (message[i] < 127)
          {
             message[i] = message[i] + 1;
-            printf("%s \n", message)
+            printf("%s \n", message);
          }
       }
       trials += 1;
