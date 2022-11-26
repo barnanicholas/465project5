@@ -38,7 +38,9 @@ int main()
    unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
    int len = messagedigest(message, digest);
    printf("exiting\n\n");
-   printf("the digest of \'%s\' is \'%02x\' with length of %d\n", message, digest, len);
+   for (i = 0; i < len; i++)
+        printf("%02x", digest[i]);
+    printf("\n");
 
    return 0; 
 }
