@@ -38,7 +38,7 @@ int messagedigest(const unsigned char *message, unsigned char * digest)
 
 int main()
 { 
-
+   int average = 0;
 for (int k = 0; k < 5; k++)
    {
       unsigned int trials = 0;
@@ -80,7 +80,10 @@ for (int k = 0; k < 5; k++)
       printf("\n");
 
       printf("message main : %s \n message alt : %s \n number of trials req: %u \n", messagemain, message, trials);
+      average += trials;
    }
+   average = average/5;
+   printf("average overall: %u \n", average);
    return 0;
 }
 
