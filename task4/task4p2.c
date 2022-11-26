@@ -52,6 +52,7 @@ int main()
          {
             message[i] = message[i] + 1;
             printf("%s \n", message);
+            break;
          }
       }
       trials += 1;
