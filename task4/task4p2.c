@@ -46,7 +46,7 @@ int main()
    //while (!(digest[0] == digestmain[0] && digest[1] == digestmain[1]  && digest[2] == digestmain[2]) || message[255] == 127)
    while (!(message[1000] == 126))
    {
-      for (int i = 0; i < 255; i++)
+      for (int i = 0; i < 1000; i++)
       {
          if (message[i] < 126)
          {
@@ -55,7 +55,7 @@ int main()
             {
                for (int j = 0; i < i; j++)
                {
-                  message[j] == 34;
+                  message[j] = 34;
                }
                
             }
