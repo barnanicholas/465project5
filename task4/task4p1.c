@@ -47,13 +47,8 @@ for (int k = 0; k < 5; k++)
       int len = messagedigest(messagemain, digestmain);
       unsigned char * digest = malloc(EVP_MAX_MD_SIZE);  
       //printf("entering into main \n\n");
-      unsigned int trials = 0;
-      unsigned char * digestmain = malloc(EVP_MAX_MD_SIZE);
       //printf("exiting\n\n");
       unsigned char message[1001];
-      
-      unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
-
       //while (!(digest[0] == digestmain[0] && digest[1] == digestmain[1]  && digest[2] == digestmain[2]) || message[255] == 127)
       while (1)
       {
