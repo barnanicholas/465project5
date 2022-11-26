@@ -53,7 +53,7 @@ int main()
             message[i] = message[i] + 1;
             if(message[i] == 126)
             {
-               for (int j = 0; i < i; j++)
+               for (int j = 0; j < i; j++)
                {
                   message[j] = 34;
                }
