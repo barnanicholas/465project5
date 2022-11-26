@@ -24,7 +24,7 @@ int messagedigest(const unsigned char *message, unsigned char **digest)
 
 int main()
 {
-   printf('entering into main \n\n');
+   printf("entering into main \n\n");
 
    unsigned char message[] = "hello, this is a really cool file with some really cool contents\n";
    unsigned char ** digest;
