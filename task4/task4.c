@@ -35,7 +35,7 @@ int main()
 
    unsigned char message[] = "hello, this is a really cool file with some really cool contents\n";
    unsigned char digest[EVP_MAX_MD_SIZE];
-   messagedigest(message,);
+   messagedigest(message, digest);
    printf("exiting\n\n");
    printf("the digest of \'%s\' is \'%s\'\n", message, digest);
 
