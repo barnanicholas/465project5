@@ -43,7 +43,8 @@ int main()
    unsigned char message[256];
    unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
 
-   while (!(digest[0] == digestmain[0] && digest[1] == digestmain[1]  && digest[2] == digestmain[2]) || message[255] == 127)
+   //while (!(digest[0] == digestmain[0] && digest[1] == digestmain[1]  && digest[2] == digestmain[2]) || message[255] == 127)
+   while (!(digest[0] == digestmain[0]) || message[255] == 127)
    {
       for (int i = 0; i < 255; i++)
       {
@@ -72,7 +73,7 @@ int main()
         printf("%02x", digest[i]);
     printf("\n");
    
-   printf("message main : %s \n message alt : \n", messagemain, message);
+   printf("message main : %s \n message alt : \n number of trials req: %d \n", messagemain, message,trials);
    
 
    }
