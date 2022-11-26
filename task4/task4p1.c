@@ -43,12 +43,7 @@ int main()
    int len = messagedigest(messagemain, digestmain);
    //printf("exiting\n\n");
    unsigned char message[] = "";
-   unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
-
-
-
-   int len = messagedigest(messagemain, digestmain);
-   
+   unsigned char * digest = malloc(EVP_MAX_MD_SIZE);   
 
 
 
