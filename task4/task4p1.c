@@ -1,6 +1,8 @@
 #include <openssl/evp.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
 
 
 
@@ -35,23 +37,55 @@ int messagedigest(const unsigned char *message, unsigned char * digest)
 
 
 int main()
-{
-   //printf("entering into main \n\n");
-   unsigned int trials = 0;
-   unsigned char messagemain[] = "hello, this is a really cool file with some really cool contents\n";
-   unsigned char * digestmain = malloc(EVP_MAX_MD_SIZE);
-   int len = messagedigest(messagemain, digestmain);
-   //printf("exiting\n\n");
-   unsigned char message[] = "";
-   unsigned char * digest = malloc(EVP_MAX_MD_SIZE);   
+{ 
 
+for (int k = 0; k < 5; k++)
+   {
+      unsigned int trials = 0;
+      unsigned char messagemain[1001];
+      unsigned char * digestmain = malloc(EVP_MAX_MD_SIZE);
+      int len = messagedigest(messagemain, digestmain);
+      unsigned char * digest = malloc(EVP_MAX_MD_SIZE);  
+      //printf("entering into main \n\n");
+      unsigned int trials = 0;
+      unsigned char * digestmain = malloc(EVP_MAX_MD_SIZE);
+      //printf("exiting\n\n");
+      unsigned char message[1001];
+      
+      unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
 
+      //while (!(digest[0] == digestmain[0] && digest[1] == digestmain[1]  && digest[2] == digestmain[2]) || message[255] == 127)
+      while (1)
+      {
+         for (int i = 0; i < 1001; i++)
+         {
+            messagemain[i] = (rand() % (126 - 33 + 1)) + 33;
+            message[i] = (rand() % (126 - 33 + 1)) + 33;
+         }
+         trials += 1;
+         
+         messagedigest(messagemain, digestmain);
+         messagedigest(message, digest);
+         if (digest[0] == digestmain[0] && digest[1] == digestmain[1]  && digest[2] == digestmain[2])
+         {
+            printf("sucess");
+            break;
+         }
 
-   
-   for (int i = 0; i < len; i++)
-        printf("%02x", digest[i]);
-    printf("\n");
+      }
 
-   return 0; 
+      printf("digest main : ");
+      for (int i = 0; i < 32; i++)
+         printf("%02x", digestmain[i]);
+      printf("\n");
+
+      printf("digest alt : ");
+      for (int i = 0; i < 32; i++)
+         printf("%02x", digest[i]);
+      printf("\n");
+
+      printf("message main : %s \n message alt : %s \n number of trials req: %u \n", messagemain, message, trials);
+   }
+   return 0;
 }
 
