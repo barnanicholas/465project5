@@ -36,6 +36,11 @@ int main()
 
    unsigned char message[] = "hello, this is a really cool file with some really cool contents\n";
    unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
+   for (size_t i = 0; i < EVP_MAX_MD_SIZE; i++)
+   {
+      digest[i] = 0x0;
+   }
+   
    int len = messagedigest(message, digest);
    printf("exiting\n\n");
    printf("the digest of \'%s\' is \'%s\' with length of %d\n", message, digest, len);
