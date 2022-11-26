@@ -2,10 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 
-char * messagedigest(const unsigned char *message)
+char * messagedigest(const unsigned char *message; unsigned char * digest)
 {
    printf("entering into md \n\n");
-   unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
 
    unsigned int len_digest;
    EVP_MD_CTX *mdctx;
@@ -35,7 +34,8 @@ int main()
    printf("entering into main \n\n");
 
    unsigned char message[] = "hello, this is a really cool file with some really cool contents\n";
-   char * digest = messagedigest(message);
+   unsigned char digest[EVP_MAX_MD_SIZE];
+   messagedigest(message, digest);
    printf("exiting\n\n");
    printf("the digest of \'%s\' is \'%s\'\n", message, digest);
 
