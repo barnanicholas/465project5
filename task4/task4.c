@@ -4,6 +4,7 @@
 
 int messagedigest(const unsigned char *message, unsigned char **digest)
 {
+   printf('entering into md \n\n');
    unsigned int len_digest;
    EVP_MD_CTX *mdctx;
 	mdctx = EVP_MD_CTX_create();
@@ -23,10 +24,11 @@ int messagedigest(const unsigned char *message, unsigned char **digest)
 
 int main()
 {
+   printf('entering into main \n\n');
    unsigned char message[] = "hello, this is a really cool file with some really cool contents\n";
    unsigned char ** digest;
    messagedigest(message, digest);
-   printf("the digest of \'%s\' is \'%s\'", message, *digest);
+   printf("the digest of \'%s\' is \'%s\'\n", message, *digest);
 
    return 0; 
 }
