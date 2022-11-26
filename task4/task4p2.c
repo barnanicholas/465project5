@@ -34,68 +34,73 @@ int messagedigest(const unsigned char *message, unsigned char * digest)
 
 int main()
 {
-   //printf("entering into main \n\n");
-   unsigned int trials = 0;
    unsigned char messagemain[] = "hello, this is a really cool file with some really cool contents\n";
-   unsigned char * digestmain = malloc(EVP_MAX_MD_SIZE);
-   int len = messagedigest(messagemain, digestmain);
-   //printf("exiting\n\n");
-   unsigned char message[1001] = {34};
-   unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
 
-   //while (!(digest[0] == digestmain[0] && digest[1] == digestmain[1]  && digest[2] == digestmain[2]) || message[255] == 127)
-   while (!(message[1000] == 126))
+   for (int i = 0; i < 10; i++)
    {
-      for (int i = 0; i < 1000; i++)
+
+      //printf("entering into main \n\n");
+      unsigned int trials = 0;
+      unsigned char * digestmain = malloc(EVP_MAX_MD_SIZE);
+      int len = messagedigest(messagemain, digestmain);
+      //printf("exiting\n\n");
+      unsigned char message[1001] = {34};
+      unsigned char * digest = malloc(EVP_MAX_MD_SIZE);
+
+      //while (!(digest[0] == digestmain[0] && digest[1] == digestmain[1]  && digest[2] == digestmain[2]) || message[255] == 127)
+      while (!(message[1000] == 126))
       {
-         if (message[i] < 126)
+         for (int i = 0; i < 1000; i++)
          {
-            message[i] = message[i] + 1;
-            if(message[i] == 126)
+            if (message[i] < 126)
             {
-               for (int j = 0; j < i; j++)
+               message[i] = message[i] + 1;
+               if(message[i] == 126)
                {
-                  message[j] = 34;
+                  for (int j = 0; j < i; j++)
+                  {
+                     message[j] = 34;
+                  }
+
                }
-               
+               break;
             }
+
+         }
+         //printf("message %s \n", message);
+         trials += 1;
+         messagedigest(message, digest);
+         if (digest[0] == digestmain[0] && digest[1] == digestmain[1]  && digest[2] == digestmain[2])
+         {
+            printf("sucess");
             break;
          }
-         
+
       }
-      //printf("message %s \n", message);
-      trials += 1;
-      messagedigest(message, digest);
-      if (digest[0] == digestmain[0] && digest[1] == digestmain[1]  && digest[2] == digestmain[2])
+
+      if (message[255] == 126)
       {
-         printf("sucess");
-         break;
+         printf("better luck next time");
       }
-      
+      else
+      {
+      printf("digest main : ");
+      for (int i = 0; i < 32; i++)
+         printf("%02x", digestmain[i]);
+      printf("\n");
+
+
+      printf("digest alt : ");
+      for (int i = 0; i < 32; i++)
+         printf("%02x", digest[i]);
+      printf("\n");
+
+      printf("message main : %s \n message alt : %s \n number of trials req: %u \n", messagemain, message, trials);
+
+
+      }
+      messagemain[0] += 1;
    }
-   
-   if (message[255] == 126)
-   {
-      printf("better luck next time");
-   }
-   else
-   {
-   printf("digest main : ");
-   for (int i = 0; i < 32; i++)
-        printf("%02x", digestmain[i]);
-    printf("\n");
-
-
-   printf("digest alt : ");
-   for (int i = 0; i < 32; i++)
-        printf("%02x", digest[i]);
-    printf("\n");
-   
-   printf("message main : %s \n message alt : %s \n number of trials req: %u \n", messagemain, message, trials);
-   
-
-   }
-
-   return 0; 
+   return 0;
 }
 
