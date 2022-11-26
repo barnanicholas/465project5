@@ -18,7 +18,6 @@ int messagedigest(const unsigned char *message, unsigned char **digest)
    printf("final \n\n");
    EVP_DigestFinal_ex(mdctx, *digest, &len_digest);
 	printf(" destroy \n\n");
-   EVP_MD_CTX_destroy(mdctx);
 
    return len_digest;
 }
