@@ -7,12 +7,18 @@ int messagedigest(const unsigned char *message, unsigned char **digest)
    printf("entering into md \n\n");
    unsigned int len_digest;
    EVP_MD_CTX *mdctx;
+   printf("create \n\n");
 	mdctx = EVP_MD_CTX_create();
+   printf("INIT \n\n");
 	EVP_DigestInit_ex(mdctx, EVP_md5(), NULL);
-	EVP_DigestUpdate(mdctx, message, strlen(message));
-	*digest = (unsigned char *)OPENSSL_malloc(EVP_MD_size(EVP_md5()));
+	printf("update \n\n");
+   EVP_DigestUpdate(mdctx, message, strlen(message));
+	printf("malloc \n\n");
+   *digest = (unsigned char *)OPENSSL_malloc(EVP_MD_size(EVP_md5()));
+   printf("final \n\n");
    EVP_DigestFinal_ex(mdctx, *digest, &len_digest);
-	EVP_MD_CTX_destroy(mdctx);
+	printf(" destroy \n\n");
+   EVP_MD_CTX_destroy(mdctx);
 
    return len_digest;
 }
