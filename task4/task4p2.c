@@ -57,7 +57,7 @@ int main()
       }
       trials += 1;
       messagedigest(message, digest);
-      if (digest[0] == digestmain[0])
+      if (digest[0] == digestmain[0] && digest[1] == digestmain[1]  && digest[2] == digestmain[2])
       {
          printf("sucess");
          break;
